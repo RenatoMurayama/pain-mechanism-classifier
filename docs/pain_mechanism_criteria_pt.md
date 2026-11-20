@@ -33,6 +33,11 @@ Exemplos (Finucane et al., 2020):
 - Trauma importante, osteoporose, corticoterapia prolongada → possível fratura
 - Défice neurológico progressivo
 - Sinais inflamatórios (ex.: rigidez matinal > 30 min, PCR/VS elevadas) → possível doença inflamatória/reumática
+- **Achados graves nos exames de imagem** → ex.: fratura, lesão suspeita de malignidade, compressão medular/mielopatia, sinais de infeção ou de doença inflamatória sistémica
+
+**As red flags podem surgir em qualquer momento da avaliação** — anamnese, exame físico, exames de imagem ou análises — e também mais tarde, durante o tratamento. Como os utilizadores previstos incluem profissionais que não fazem triagem médica (ex.: profissionais do exercício), a ferramenta **não** assume que o rastreio foi feito antes: o portão de segurança está integrado na ferramenta e é reaplicado sempre que surge informação nova.
+
+> **Achados incidentais:** nem todo o achado de imagem é uma red flag. Achados incidentais comuns (ex.: degeneração discal, hemangioma vertebral, pequenos quistos benignos) são frequentes em pessoas sem dor e, por si só, não obrigam a exclusão. Só os achados graves, suspeitos ou que mudam a abordagem médica ativam o portão.
 
 ---
 

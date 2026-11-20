@@ -33,6 +33,11 @@ Examples (Finucane et al., 2020):
 - Significant trauma, osteoporosis, prolonged corticosteroid use → possible fracture
 - Progressive neurological deficit
 - Inflammatory features (e.g., morning stiffness > 30 min, elevated CRP/ESR) → possible inflammatory/rheumatic disease
+- **Serious imaging findings** → e.g., fracture, lesion suspicious of malignancy, spinal cord compression/myelopathy, signs of infection or systemic inflammatory disease
+
+**Red flags can appear at any point of the assessment** — history, physical examination, imaging or laboratory tests — and also later, during treatment. Because the intended users include professionals who do not perform medical triage (e.g., exercise professionals), the tool does **not** assume that screening was done beforehand: the safety gate is built into the tool and is re-applied whenever new information becomes available.
+
+> **Incidental findings:** not every imaging finding is a red flag. Common incidental findings (e.g., disc degeneration, vertebral haemangioma, small benign cysts) are frequent in asymptomatic people and do not, by themselves, require exclusion. Only findings that are serious, suspicious or that change medical management trigger the gate.
 
 ---
 
