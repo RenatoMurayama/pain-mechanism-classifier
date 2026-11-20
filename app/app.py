@@ -4,6 +4,8 @@ import joblib
 import pandas as pd
 import streamlit as st
 
+from guidelines import COMMON_PRINCIPLES, GUIDELINES
+
 # Paths
 ROOT_DIR = Path(__file__).resolve().parent.parent
 MODEL_PATH = ROOT_DIR / "models" / "pain_mechanism_model.joblib"
@@ -138,3 +140,57 @@ if tissue == "not_performed" and nerve == "not_performed":
 missing = [col for col in NUMERIC_FEATURES if pd.isna(X_new.at[0, col])]
 if missing:
     st.info(f"Not applied: {', '.join(missing)}. Training medians were used, so the result is less reliable.")
+
+# Explanation: linear contributions for the predicted class
+preprocess = model.named_steps["preprocess"]
+classifier = model.named_steps["model"]
+x_t = preprocess.transform(X_new)[0]
+feature_names = [name.split("__", 1)[1] for name in preprocess.get_feature_names_out()]
+class_idx = list(classifier.classes_).index(top_class)
+contributions = pd.Series(classifier.coef_[class_idx] * x_t, index=feature_names)
+
+supporting = contributions[contributions > 0].sort_values(ascending=False).head(3)
+against = contributions[contributions < 0].sort_values().head(2)
+
+def describe(name):
+    label = name.replace("_", " ")
+    if name in X_new.columns and pd.notna(X_new.at[0, name]):
+        return f"{label} = {X_new.at[0, name]:g}"
+    return label
+
+
+st.subheader("Main reasons")
+st.write(f"**Towards {top_class}:**")
+for name, value in supporting.items():
+    st.markdown(f"- {describe(name)} (+{value:.2f})")
+st.write(f"**Against {top_class}:**")
+for name, value in against.items():
+    st.markdown(f"- {describe(name)} ({value:.2f})")
+st.caption("Contributions in log-odds compared with an average training patient. They describe the model, not the cause of pain.")
+
+# Guideline-based recommendations
+SECTION_TITLES = {"do": "Do", "avoid": "Avoid", "refer": "Refer"}
+
+
+def show_guidelines(mechanism):
+    for section, title in SECTION_TITLES.items():
+        st.markdown(f"**{title}**")
+        for item in GUIDELINES[mechanism][section]:
+            st.markdown(f"- {item}")
+
+
+st.header("4. Guideline-based recommendations")
+st.caption("Fixed educational content, not machine learning. Users without diagnostic competence: use for education and referral only.")
+
+st.markdown("**For all mechanisms**")
+for item in COMMON_PRINCIPLES:
+    st.markdown(f"- {item}")
+
+st.subheader(top_class.capitalize())
+show_guidelines(top_class)
+
+if top_p - second_p < UNCERTAINTY_MARGIN:
+    with st.expander(f"Also consider: {second_class.capitalize()}"):
+        show_guidelines(second_class)
+
+st.caption("Sources: Lin et al. 2020 (BJSM); NICE NG59, NG193 and CG173.")
