@@ -7,6 +7,8 @@
 > ⚠️ **Não é um dispositivo médico. Treinado com dados sintéticos. Não foi validado em doentes reais. Não se destina a uso clínico.**
 > Este é um projeto de portfólio que demonstra um fluxo completo e responsável de machine learning clínico.
 
+**🚀 Demo online:** [pain-mechanism-classifier.streamlit.app](https://pain-mechanism-classifier.streamlit.app)
+
 ![Captura de ecrã da app](app_screenshot.png)
 
 ---
